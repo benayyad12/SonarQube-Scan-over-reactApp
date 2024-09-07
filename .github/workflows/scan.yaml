@@ -1,0 +1,45 @@
+name: SonarQube Scan for React
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  sonarQubeScan:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # You can specify the Node version your project uses
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build the React project
+      - name: Build React App
+        run: npm run build
+
+      # Step 5: Run SonarQube scan
+      - name: SonarQube Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          npx sonarqube-scanner \
+            -Dsonar.projectKey=react-scanner \
+            -Dsonar.host.url=https://a486-77-136-66-115.ngrok-free.app \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.sources=src \
+            -Dsonar.exclusions=**/node_modules/**,**/*.test.js,**/*.spec.js
+

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-web-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-web-app
+  template:
+    metadata:
+      labels:
+        app: simple-web-app
+    spec:
+      containers:
+      - name: simple-web-app
+        image: saadrepo/nodeapp:2
+        ports:
+        - containerPort: 9000
+          resources:
+          limits:
+            memory: 64Mi   # Adjust based on your application requirements
+            cpu: 10m       # Adjust based on your application requirements
+          requests:
+            memory: 64Mi   # Adjust based on your application requirements
+            cpu: 10m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-web-app-service
+spec:
+  selector:
+    app: simple-web-app
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 5173
+  type: LoadBalancer

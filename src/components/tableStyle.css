@@ -1,0 +1,61 @@
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.activity-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* .activity-table th,
+.activity-table td {
+  box-sizing: border-box;
+  width: 60px; /* Set width to 60px */
+  /* padding: 0; /* Remove padding */
+  /* margin: 0; Remove margin */
+  /* border: 1px solid #ddd; Maintain border */
+  /* text-align: center; Maintain text alignment */
+  /* position: relative; Maintain relative positioning */
+ */ */
+
+.activity-table th{
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  position:relative; /* Added for positioning */
+}
+
+
+.activity-table td {
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  position:relative; /* Added for positioning */
+  width: 60px !important;
+}
+
+/* .activity-table td:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+} */
+
+.activity-bar {
+  background-color: #4caf50; /* Green color, you can customize this */
+  height: 20%;
+  display: inline-block;
+  position: absolute; /* Adjusted for absolute positioning */
+  min-width: 10px;
+  top: 0;
+  left: 0;
+  
+}
