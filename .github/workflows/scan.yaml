@@ -37,7 +37,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           npx sonarqube-scanner \
-            -Dsonar.projectKey=camvam \
+            -Dsonar.projectKey=camvam\
             -Dsonar.host.url=https://2c76-77-136-66-115.ngrok-free.app \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.sources=src \
